@@ -1,0 +1,29 @@
+package com.cardgarden.project.model.recommendAI;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CardRecommendationService {
+	
+	@Autowired
+	private CardRecommendationDAOInterface cardRecommendationDAO;
+	
+	public List<CardRecommendationDTO> getRecommendResult(int patternId) throws Exception {
+		List<CardRecommendationDTO> resultList = cardRecommendationDAO.getRecommendResult(patternId);
+		return resultList;
+	}
+	
+	public List<RecommendResultDTO> getRecommendDetailResult(int patternId, int cardId) {
+		List<RecommendResultDTO> resultMessage = cardRecommendationDAO.getRecommendDetailResult(patternId, cardId);
+		return resultMessage;
+	}
+	
+	public List<CardRecommendationDTO> getRecommendCosine(int cardid) {
+		List<CardRecommendationDTO> resultList = cardRecommendationDAO.getRecommendCosine(cardid);
+		return resultList;
+		
+	}
+}
